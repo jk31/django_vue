@@ -32,6 +32,8 @@ git init
 git add .
 
 git commit -m 'init'
+
+git branch -M main
 ```
 
 ## Deployment
@@ -86,7 +88,10 @@ python manage.py migrate
 
 # Creat admin account
 python manage.py createsuperuser
+```
 
+If you want to build on the heroku instance:
+```
 # Clean node packages and install dependacies to be able to build the frontend
 rm -rf node_modules package-lock.json && npm install && npm install --only=dev
 
@@ -143,27 +148,9 @@ python manage.py runserver
 ```
 
 
-## frontend
+## Frontend Development
 
-### Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
