@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('users.urls')),
     #path('api/', include('api.urls')),
+    path('api/', include('djoser.urls')),
     url(r'^(?!admin|api|static).*$', index, name='index'),
 ]
 

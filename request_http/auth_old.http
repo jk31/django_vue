@@ -1,0 +1,98 @@
+### CSRF
+
+GET http://127.0.0.1:8000/auth/csrf/
+
+### REGISTER returns email and id
+
+POST http://127.0.0.1:8000/auth/users/
+Content-Type: application/json
+
+{
+    "email": "destroy@user.com",
+    "password": "apfel123"
+}
+
+
+### LOGIN returns auth_token {"auth_token": "cbf35b2bf45c5af6a74bf8453c826241d68082b3"}
+
+POST http://127.0.0.1:8000/auth/token/login/
+Content-Type: application/json
+
+{
+    "email": "destroy@user.com",
+    "password": "apfel123"
+}
+
+
+### LOGOUT
+
+POST http://127.0.0.1:8000/auth/token/logout/
+Authorization: Token 9bb0b71ea8899c8889e0f49744eb336fb2269424
+
+
+
+### USERS ME returns email and id
+
+GET http://127.0.0.1:8000/auth/users/me/
+Authorization: Token 3bfbb77f010393de7532e4f0956882a06d3a2ecf
+Accept: application/json
+
+
+### DELETE user disabled
+
+DELETE http://127.0.0.1:8000/auth/users/me/
+Authorization: Token d0cc2e6a8671ed65ea13dde96040a7c745f9874d
+Content-Type: application/json
+
+{
+    "current_password": "apfel123"
+}
+
+### CHANGE email or username
+
+POST http://127.0.0.1:8000/auth/users/set_email/
+Content-Type: application/json
+Authorization: Token e181f8c338c158778fce1ddf03b1f36b48d15fa7
+
+{
+    "new_email": "banane@test.com",
+    "re_new_email": "banane@test.com",
+    "current_password": "banane123"
+}
+
+
+### CHANGE password
+
+POST http://127.0.0.1:8000/auth/users/set_password/
+Content-Type: application/json
+Authorization: Token 5375f7e48055d449469c0787e5e4ce4d4c193c0a
+
+{
+    "new_password": "apfel123",
+    "re_password": "apfel123",
+    "current_password": "banane123"
+}
+
+
+### RESET password with email
+
+POST http://127.0.0.1:8000/auth/users/reset_password/
+Content-Type: application/json
+Authorization: Token 5375f7e48055d449469c0787e5e4ce4d4c193c0a
+
+{
+    "email": ""
+}
+
+### RESET password input
+
+POST http://127.0.0.1:8000/auth/users/reset_password_confirm/
+Content-Type: application/json
+Authorization: Token 5375f7e48055d449469c0787e5e4ce4d4c193c0a
+
+{
+    "uid": "ahinhm",
+    "token": "945fc3ce716b2db6cbc4c20356cf8508",
+    "new_password": "orange1234",
+    "re_new_password": "orange1234"
+}

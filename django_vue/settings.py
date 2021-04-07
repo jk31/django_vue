@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'djoser',
     'corsheaders',
     'api.apps.ApiConfig',
     "users.apps.UsersConfig",
@@ -92,6 +93,39 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ]
+}
+
+DJOSER = {
+    "ACTIVATION_URL": "#/activate/{uid}/{token}",
+    "PASSWORD_RESET_CONFIRM_URL": "#/password/reset/confirm/{uid}/{token}",
+    "HIDE_USERS": True,
+    "SEND_ACTIVATION_EMAIL": False,
+    "SEND_CONFIRMATION_EMAIL": False,
+    "USER_CREATE_PASSWORD_RETYPE": True,
+    "SET_PASSWORD_RETYPE": False,
+    "PASSWORD_RESET_CONFIRM_RETYPE": False,
+    "SET_USERNAME_RETYPE": False,
+    "USERNAME_RESET_CONFIRM_RETYPE": False,
+    "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": False,
+    "USERNAME_RESET_SHOW_EMAIL_NOT_FOUND": False,
+    "PASSWORD_CHANGED_EMAIL_CONFIRMATION": False,
+    "USERNAME_CHANGED_EMAIL_CONFIRMATION": False,
+    "LOGOUT_ON_PASSWORD_CHANGE": False,
+    "PERMISSIONS": {
+        "activation": ["rest_framework.permissions.AllowAny"],
+        "password_reset": ["rest_framework.permissions.AllowAny"],
+        "password_reset_confirm": ["rest_framework.permissions.AllowAny"],
+        "set_password": ["djoser.permissions.CurrentUserOrAdmin"],
+        "username_reset": ["rest_framework.permissions.IsAdminUser"],
+        "username_reset_confirm": ["rest_framework.permissions.IsAdminUser"],
+        "set_username": ["rest_framework.permissions.IsAdminUser"],
+        "user_create": ["rest_framework.permissions.AllowAny"],
+        "user_delete": ["rest_framework.permissions.IsAdminUser"],
+        "user": ["djoser.permissions.CurrentUserOrAdmin"],
+        "user_list": ["djoser.permissions.CurrentUserOrAdmin"],
+        "token_create": ["rest_framework.permissions.AllowAny"],
+        "token_destroy": ["rest_framework.permissions.AllowAny"],
+    }
 }
 
 MIDDLEWARE = [
@@ -124,7 +158,7 @@ STATICFILES_DIRS = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(FRONTEND_DIR, 'dist'),],
+        'DIRS': [os.path.join(FRONTEND_DIR, 'dist'), os.path.join(FRONTEND_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

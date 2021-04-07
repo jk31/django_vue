@@ -1,0 +1,29 @@
+### Retrieve user detail
+
+GET http://localhost:8000/auth/csrf/
+Accept: application/json
+
+
+### Retrieve user detail
+
+GET http://localhost:8000/api/user/
+Accept: application/json
+Authorization: Basic :banane123
+
+### Create new user
+
+POST http://localhost:8000/api/user/
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "banane123"
+}
+
+
+### DJOSER: USERS ME returns email -and id
+
+GET http://127.0.0.1:8000/djoser/users/me/
+Authorization: Basic :banane123
+Accept: application/json

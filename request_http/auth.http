@@ -1,0 +1,32 @@
+### LOGIN BASIC (should not work here because of CSRF protection)
+POST http://127.0.0.1:8000/api/login/
+Authorization: Basic testingbackends@gandi.net:notverycommon
+
+### LOGIN TOKEN (returns auth_token)
+POST http://127.0.0.1:8000/api/token/login/
+Content-Type: application/json
+
+{
+    "email": "testingbackends@gandi.net",
+    "password": "notverycommon"
+}
+
+### LOGOUT
+POST http://127.0.0.1:8000/api/token/logout/
+Authorization: Token 002ff58baf643b1b9da50c06308afeaf5923d1e5
+
+
+### SESSION (should react false here)
+GET http://127.0.0.1:8000/api/session/
+
+
+### REGISTRATION
+POST http://127.0.0.1:8000/api/users/
+Content-Type: application/json
+
+{
+    "email": "testingbackends@gandi.net",
+    "password": "notverycommon",
+    "re_password": "notverycommon"
+}
+
