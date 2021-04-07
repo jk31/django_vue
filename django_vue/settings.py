@@ -46,6 +46,12 @@ SESSION_COOKIE_SAMESITE = 'Strict'
 CSRF_COOKIE_HTTPONLY = False 
 SESSION_COOKIE_HTTPONLY = True
 
+CORS_ALLOWED_ORIGINS = [
+    "https://yourdomain.com",
+    "http://localhost:8000",
+    "http://127.0.0.1:9000"
+]
+
 SITE_ID = 1
 
 # Email
@@ -75,6 +81,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'api.apps.ApiConfig',
     "users.apps.UsersConfig",
 ]
@@ -88,6 +95,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
