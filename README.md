@@ -55,14 +55,13 @@ git branch -M main
 
 Read [official Django deployment checklist](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/).
 
-`settings.py`:
+
 - [ ] Turn of Debugging
 - [ ] Change Email Backend in 
 - [ ] Secure cookies
 - [ ] Secure `SECRET_KEY` 
 - [ ] Setup environmental variables on the deployment server
 - [ ] Have correct migrations files for the database
-
 - [ ] Change `runtime.txt` python version
 
 
