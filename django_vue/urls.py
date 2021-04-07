@@ -9,7 +9,8 @@ def index(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),  # new
-    url(r'^(?!admin|api-token-auth|static).*$', index, name='index'),
+    path('api/', include('users.urls')),
+    path('api/', include('api.urls')),
+    url(r'^(?!admin|api|static).*$', index, name='index'),
 ]
 
