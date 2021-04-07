@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ### LOGOUT
 POST http://127.0.0.1:8000/api/token/logout/
-Authorization: Token 002ff58baf643b1b9da50c06308afeaf5923d1e5
+Authorization: Token e09af1e9db76f413f91e0ac88c1be8c9bc53281c
 
 
 ### SESSION (should react false here)
@@ -30,3 +30,11 @@ Content-Type: application/json
     "re_password": "notverycommon"
 }
 
+
+### /api/
+GET http://127.0.0.1:8000/api/
+Authorization: Token e09af1e9db76f413f91e0ac88c1be8c9bc53281c
+
+### /api/users/
+GET http://127.0.0.1:8000/api/users/
+Authorization: Token e09af1e9db76f413f91e0ac88c1be8c9bc53281c

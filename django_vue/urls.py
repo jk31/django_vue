@@ -12,6 +12,7 @@ urlpatterns = [
     path('api/', include('users.urls')),
     #path('api/', include('api.urls')),
     path('api/', include('djoser.urls')),
+    path('api/', include('djoser.urls.authtoken')),
     url(r'^(?!admin|api|static).*$', index, name='index'),
 ]
 
